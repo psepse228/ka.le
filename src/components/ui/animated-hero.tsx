@@ -2,7 +2,6 @@ import { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { MoveRight, PhoneCall } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { AuroraBackground } from "@/components/ui/aurora-background";
 import { Link } from "react-router-dom";
 
 function Hero() {
@@ -20,8 +19,20 @@ function Hero() {
   }, [titleNumber, titles]);
 
   return (
-    <AuroraBackground>
-      <div className="w-full">
+    <div className="relative flex flex-col h-[100vh] items-center justify-center overflow-hidden bg-[#EEF4FA]">
+      {/* Video background */}
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover"
+        src="/hero.mp4"
+      />
+      {/* Soft overlay to keep text readable */}
+      <div className="absolute inset-0" style={{ background: 'rgba(238,244,250,0.35)' }} />
+
+      <div className="relative z-10 w-full">
         <div className="container mx-auto px-6">
           <div className="flex gap-6 py-32 lg:py-44 items-center justify-center flex-col">
 
@@ -108,7 +119,7 @@ function Hero() {
           </div>
         </div>
       </div>
-    </AuroraBackground>
+    </div>
   );
 }
 
